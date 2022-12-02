@@ -2,8 +2,6 @@ function Sidebar(props) {
   function getTitle(body) {
     let splitArray = body.split('\n');
     let firstLine = splitArray[0];
-    // let regex = /[^\w\s]+/g;
-    // let titleText = firstLine.replace(regex, '').trim();
     return firstLine;
   }
 
@@ -14,6 +12,12 @@ function Sidebar(props) {
         onClick={() => props.setCurrentNoteId(note.id)}
       >
         <h4 className='text-snippet'>{getTitle(note.body)}</h4>
+        <button
+          className='delete-btn'
+          onClick={event => props.deleteNote(event, note.id)}
+        >
+          <i className='gg-trash trash-icon'></i>
+        </button>
       </div>
     </div>
   ));
